@@ -46,6 +46,7 @@
         { x: 42, y: 12, z: 0 },
         { x: 42, y: 17, z: 5 },
         { x: 47, y: 8, z: 0 },
+        { x: 47, y: 16, z: 5 },
     ]
 
     export let selectedYSize: number | null = null;
@@ -113,7 +114,7 @@
         xPos={d.x}
         zPos={d.z}
         ySize={d.y}
-        color={`hsl(${(index * 40) % 360}, 100%, 50%)`}
+        color={`hsl(${((d.x + 360) * 5) % 360}, 80%, 60%)`}
         selectedYSize={selectedYSize}
         on:selectYSize={(e) => handleSelectYSize(e.detail.selectedYSize)}
         bind:value={switchValue}
