@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS api;
-DROP TABLE IF EXISTS api_labels;
+DROP TABLE IF EXISTS api_labels_x;
+DROP TABLE IF EXISTS api_labels_z;
 DROP TABLE IF EXISTS data;
-DROP TABLE IF EXISTS data_labels;
+DROP TABLE IF EXISTS data_labels_x;
+DROP TABLE IF EXISTS data_labels_z;
 
 CREATE TABLE IF NOT EXISTS api(
     id SERIAL PRIMARY KEY,
@@ -9,8 +11,12 @@ CREATE TABLE IF NOT EXISTS api(
     y INT NOT NULL,
     z INT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS api_labels(
+CREATE TABLE IF NOT EXISTS api_labels_x(
     x INT PRIMARY KEY,
+    label TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS api_labels_z(
+    z INT PRIMARY KEY,
     label TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS data(
@@ -19,8 +25,12 @@ CREATE TABLE IF NOT EXISTS data(
     y INT NOT NULL,
     z INT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS data_labels(
+CREATE TABLE IF NOT EXISTS data_labels_x(
     x INT PRIMARY KEY,
+    label TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS data_labels_z(
+    z INT PRIMARY KEY,
     label TEXT NOT NULL
 );
 
@@ -65,3 +75,29 @@ INSERT INTO data(x,y,z) VALUES
 (42, 17, 5),
 (47, 8, 0),
 (47, 16, 5);
+
+INSERT INTO data_labels_x(x,label) VALUES
+(-48, 'A'),
+(-43, 'B'),
+(-38, 'C'),
+(-33, 'D'),
+(-28, 'E'),
+(-23, 'F'),
+(-18, 'G'),
+(-13, 'H'),
+(-8, 'I'),
+(-3, 'J'),
+(2, 'K'),
+(7, 'L'),
+(12, 'M'),
+(17, 'N'),
+(22, 'O'),
+(27, 'P'),
+(32, 'Q'),
+(37, 'R'),
+(42, 'S'),
+(47, 'T');
+
+INSERT INTO data_labels_z(z,label) VALUES
+(0, 'Z1'),
+(5, 'Z2');

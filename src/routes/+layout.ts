@@ -6,6 +6,8 @@ export const load: LayoutLoad = async ({ fetch }) => {
 
 	return {
 		coordinates: res.data,
+		x_label: res.x_label,
+		z_label: res.z_label,
 		apiCoordinates: res.api
 	};
 };

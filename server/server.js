@@ -15,11 +15,11 @@ const sql = postgres({
 
 async function loadApi() {
 	await sql.begin(async (sql) => {
-		const res = await fetch('https://api.nationalize.io/?name=nathaniel').then((r) => r.json());
-
+		//const res = await fetch('https://api.nationalize.io/?name=nathaniel').then((r) => r.json());
+		const res = {country: [{country_id: "US", probability: 0.2}, {country_id: "CA", probability: 0.15}, {country_id: "MX", probability: 0.2}]};
 		const data = res.country.map((row, i) => ({
 			x: 5 * i,
-			y: Math.floor(row.probability * 100),
+			y: Math.floor(row.probability * 50),
 			z: 0
 		}));
 
@@ -29,13 +29,14 @@ async function loadApi() {
 	});
 }
 
-setInterval(loadApi, 60 * 1000);
 loadApi();
 
 app.get('/', async (req, res) => {
 	const data = await sql`SELECT x,y,z FROM data`;
 	const api = await sql`SELECT x,y,z FROM api`;
-	res.send(JSON.stringify({ data, api }));
+	const x_label = await sql`SELECT x, label FROM data_labels_x`;
+	const z_label = await sql`SELECT z, label FROM data_labels_z`;
+	res.send(JSON.stringify({ data, x_label, z_label, api }));
 });
 
 app.listen(port, () => {

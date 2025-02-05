@@ -31,14 +31,13 @@
 
 {#if formVisible}
 	<div class="form-widget">
-		<Form {data} />
 		<div class="controls">
 			<Switch bind:value={switchValue} label="Maggiore o Minore" />
 		</div>
 		<p>
 			Visualizzo i valori {switchValue} di {ySize}
 		</p>
-		<button on:click={reset}>Reset View</button>
+		<button on:click={reset}>Reimposta vista</button>
 		{#if use == 'api'}
 			<button on:click={() => (use = 'database')}>Usa database</button>
 			<button on:click={() => (use = 'manual')}>Usa dati manuali</button>
@@ -49,6 +48,9 @@
 			<button on:click={() => (use = 'database')}>Usa database</button>
 			<button on:click={() => (use = 'api')}>Usa API</button>
 		{/if}
+    {#if use == 'manual'}
+    <Form {data} />
+    {/if}
 	</div>
 {/if}
 

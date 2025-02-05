@@ -23,12 +23,13 @@
 	}
 </script>
 
-<!-- Grid -->
-<Grid cellColor="#00ff00" sectionSize={1} gridSize={[100, 100]} />
+<!-- Grid 
+<Grid cellColor="#00ff00" sectionSize={1} gridSize={[150, 150]} />
+-->
 
 <T.PerspectiveCamera
 	makeDefault
-	position={[20, 40, 60]}
+	position={[80, 40, 40]}
 	on:create={({ ref }) => {
 		ref.lookAt(0, 1, 0);
 	}}
@@ -88,6 +89,30 @@
 			bind:value={switchValue}
 		/>
 	{/each}
+    {@const xmax = Math.max(...$page.data.x_label.map((d) => d.x))}
+    {@const zmax = Math.max(...$page.data.z_label.map((d) => d.z))}
+    {#each $page.data.x_label as d}
+        <Text
+            text={d.label}
+            position={[d.x, 2, zmax+5]}
+            color="#000000"
+            fontSize={2}
+            rotation.y={Math.PI / 4}
+            maxWidth={17}
+            lineHeight={1.1}
+        />
+    {/each}
+    {#each $page.data.z_label as d}
+        <Text
+            text={d.label}
+            position={[xmax+3, 2, d.z]}
+            color="#000000"
+            fontSize={2}
+            rotation.y={Math.PI / 4}
+            maxWidth={17}
+            lineHeight={1.1}
+        />
+    {/each}
 {:else}
 	{#each $data as d}
 		<Bar
