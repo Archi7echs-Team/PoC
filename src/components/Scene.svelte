@@ -23,9 +23,15 @@
 	}
 </script>
 
-<!-- Grid 
-<Grid cellColor="#00ff00" sectionSize={1} gridSize={[150, 150]} />
--->
+
+<T.Mesh
+	scale.x={200}
+	scale.z={200}
+	scale.y={0.1}
+>
+	<T.BoxGeometry />
+	<T.MeshStandardMaterial color="#dedede" depthTest={true} />
+</T.Mesh>
 
 <T.PerspectiveCamera
 	makeDefault

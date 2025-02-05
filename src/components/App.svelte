@@ -37,7 +37,7 @@
 		<p>
 			Visualizzo i valori {switchValue} di {ySize}
 		</p>
-		<button on:click={reset}>Reimposta vista</button>
+		<button on:click={()=>{reset(); switchValue = true}}>Reimposta vista</button>
 		{#if use == 'api'}
 			<button on:click={() => (use = 'database')}>Usa database</button>
 			<button on:click={() => (use = 'manual')}>Usa dati manuali</button>

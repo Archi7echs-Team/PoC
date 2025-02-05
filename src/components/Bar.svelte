@@ -27,8 +27,10 @@
 	$: {
 		if (value == 'maggiori') {
 			isSelected = selectedYSize === null || selectedYSize <= ySize;
-		} else {
+		} else if (value == 'minori') {
 			isSelected = selectedYSize === null || selectedYSize >= ySize;
+		}else{
+			isSelected = true;
 		}
 		opacity = isSelected ? 1 : 0.3;
 	}
