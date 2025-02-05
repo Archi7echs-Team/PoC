@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
-	// @ts-ignore
 	import { Sky } from '@threlte/extras';
 	import Scene from './Scene.svelte';
 	import Form from './Form.svelte';
@@ -13,7 +12,8 @@
 
 	let switchValue: any;
 	let ySize: number = -1;
-	let formVisible = true; // Stato per mostrare/nascondere il form
+	/** Stato per mostrare/nascondere il form */
+	let formVisible = true;
 
 	function setYSize(event: any) {
 		ySize = event.detail;
@@ -86,7 +86,7 @@
 			transform 0.3s ease-in-out;
 	}
 
-	.form-widget.hidden {
+	:global(.form-widget.hidden) {
 		display: none; /* Rimuove il form completamente dal layout */
 	}
 
