@@ -15,8 +15,8 @@ const sql = postgres({
 
 async function loadApi() {
 	await sql.begin(async (sql) => {
-		//const res = await fetch('https://api.nationalize.io/?name=nathaniel').then((r) => r.json());
-		const res = {country: [{country_id: "US", probability: 0.2}, {country_id: "CA", probability: 0.15}, {country_id: "MX", probability: 0.2}]};
+		const res = await fetch('https://api.nationalize.io/?name=nathaniel').then((r) => r.json());
+		//const res = {country: [{country_id: "US", probability: 0.2}, {country_id: "CA", probability: 0.15}, {country_id: "MX", probability: 0.2}]};
 		const data = res.country.map((row, i) => ({
 			x: 5 * i,
 			y: Math.floor(row.probability * 50),
