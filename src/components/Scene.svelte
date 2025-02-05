@@ -33,8 +33,11 @@
 	on:create={({ ref }) => {
 		ref.lookAt(0, 1, 0);
 	}}
+    fov={60}
 >
-	<OrbitControls enableDamping bind:ref={controls} />
+
+    <OrbitControls enableDamping bind:ref={controls} maxPolarAngle=1.55 zoomToCursor=true zoomSpeed=0.5 maxDistance=400/>
+
 </T.PerspectiveCamera>
 
 <T.AmbientLight intensity={0.2} />
