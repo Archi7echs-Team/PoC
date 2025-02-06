@@ -10,4 +10,6 @@ declare global {
 	}
 }
 
+export type Mode = 'database' | 'api' | 'manual';
+
 export {};

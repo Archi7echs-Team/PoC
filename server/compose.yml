@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=data
+    volumes:
+      - ./create.sql:/docker-entrypoint-initdb.d/create.sql:ro
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
